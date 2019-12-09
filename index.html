@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Main Page</title>
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+       
+    </head>
+
+    <body>
+      <div class="landing-page">
+            <div class="page-content">
+                <h1>Full Landing Page</h1>
+                <p>
+                   text
+                </p> 
+                <button href="#" onclick="start(event)">Get Started</button>   
+            </div>
+      </div>  
+      <div class="container">
+            <form class="box">
+           		 <h1>Login</h1>
+           		 <input type="text" name="username" placeholder="Username">
+           		 <input type="password" name="password" placeholder="Password">
+           		 <input type="button" name="" value="Login" onclick="authorization()">
+        	</form>
+		  </div>
+    </body>
+    <script>	
+    	function authorization() {
+    		const form = document.forms[0];
+    		console.log(form); 
+    		const username = form.elements.username;
+    		const password = form.elements.password;
+    		if (username.value === 'admin') {
+    			if (password.value === '123') {
+    				location.href = 'roma.html';
+    				return;
+    			} else {
+    				alert("Пароль неверен");
+    			}
+    		}
+
+    		if (username.value === 'admin2') {
+    			if (password.value === '1234') {
+    				location.href = 'vanya.html';
+    				return;
+    			} else {
+    				alert("Пароль неверен");
+    			}
+    		}
+
+    		alert ('Пользователь не найден');
+    	}
+
+    	function start() {
+			let res = 0;
+			function scroll () {
+			setTimeout(() =>  {
+				window.scrollBy(0, 10);
+				res += 10;
+				if (res < document.body.clientHeight-100)
+				scroll();
+			}, 4)
+		}
+		scroll();
+    		console.log(document.body.clientHeight)
+    	}
+
+		function resize(){
+			const size = document.getElementsByClassName("landing-page")[0];
+    		const container = document.getElementsByClassName("container")[0];
+    		container.style.height = size.clientHeight + 'px';
+    		console.log(size.clientHeight);
+			const box = document.getElementsByClassName('box')[0];
+			box.style.marginTop = (container.clientHeight - box.clientHeight)/2 + 'px';
+			box.style.marginBottom = (container.clientHeight - box.clientHeight)/2 + 'px';
+		}
+    	
+		resize();
+	
+		window.onresize = function() {
+		resize();
+		}
+
+
+    	// console.log(form.elements.Username);
+
+    	// authorization();
+    </script>
+</html>
